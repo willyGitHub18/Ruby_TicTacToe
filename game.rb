@@ -1,19 +1,19 @@
-require_relative "board"
-require_relative "player"
+require_relative "lib/board"
+require_relative "lib/player"
 
-class Game 
+class Game
 
   attr_accessor :ending, :turn
 
   def initialize(rules)
     @ending = false                 # initialise la fin du jeu
-    @turn = Random.rand(0..1)       # choisit le premier joueur 
+    @turn = Random.rand(0..1)       # choisit le premier joueur
     @players = []                   # initialise et récupère les noms des joueurs
     puts " Veuillez entrer le nom du 1er joueur ( o ) "
-    name = gets.chomp 
+    name = gets.chomp
     @players.push(addPlayer(name,"o"))
     puts " Veuillez entrer le nom du 2eme joueur ( x )"
-    name = gets.chomp 
+    name = gets.chomp
     @players.push(addPlayer(name,"x"))
   end
 
@@ -25,10 +25,10 @@ class Game
   end
 
 
-  def action                        
+  def action
     @board = Board.new
     begin
-    
+
     puts "Bienvenue sur le TicTacToe lyonnais !"
     puts "Tape 1 pour jouer"
     puts "Tape 2 pour afficher les règles"
@@ -49,35 +49,35 @@ class Game
         end
         puts "#{@players[@turn].player_name} a choisi la case #{cases}"
         problem = @board.update_case(cases.to_i - 1, @players[@turn].symbol)  # update le fichier board avec les valeurs des cases
-        
+
          @board.display
 
       if problem == 1
         altern
-      
+
       else
         puts "Cette case est déjà prise, essaie encore !"
-        
+
       end
     }
 
     elsif i == 2
       puts "Il y a deux joueurs; l’un joue avec le signe x et l’autre avec le signe o. Les deux joueurs remplissent alternativement les cellules vides. Au début du jeu, il y a 9 cellules vides dans un panneau 3x3. Le but est de placer 3 signes identiques sur une colonne, une ligne ou une diagonale. Le jeu prend fin si le panneau est entièrement rempli et si aucun joueur n’arrive à atteindre le but. Bonne chance !\n\n"
-    
+
     elsif i == 3
       @board.show_index            # affiche le tableau avec le nom des cases
       puts "\n"
-    
+
     elsif i == 4
-    
-    else 
+
+    else
       puts "Mauvaise commande, recommence !"
 
-    end 
+    end
   end while i != 4
 
 
-    
+
   end
 
 
