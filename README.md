@@ -6,6 +6,8 @@ sur un match nul.
 
 Il est possible de relancer une partie autant de fois qu'on le souhaite
 
+LE JEU SE LANCE AVEC LE FICHIER "game.rb"
+
 
 Contributeurs du projet => Laetitia Fernandes Ramalho (Laetitia69)
                         => Willy Garcia (willyGitHub18)
